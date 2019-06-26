@@ -1,0 +1,24 @@
+{
+  "name": "vue-custom-element-rails",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "license": "ISC",
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  },
+  "dependencies": {
+    "document-register-element": "^1.13.2",
+    "lodash.camelcase": "^4.3.0",
+    "vue-custom-element": "^3.2.7"
+  },
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0",
+    "vue": "^2.6.10"
+  }
+}
