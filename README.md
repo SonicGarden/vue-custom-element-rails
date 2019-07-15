@@ -1,11 +1,15 @@
 # vue-custom-element-rails
 
-[vue\-custom\-element](https://github.com/karol-f/vue-custom-element)のラッパー
+[vue\-custom\-element](https://github.com/karol-f/vue-custom-element) wrapper
 
 ## Installation
 
 ```
-"vue-custom-element-rails": "https://github.com/SonicGarden/vue-custom-element-rails.git"
+yarn add https://github.com/SonicGarden/vue-custom-element-rails.git
+```
+
+```ruby
+gem 'vue_custom_element_rails', github: 'SonicGarden/vue-custom-element-rails'
 ```
 
 ## Usage
@@ -17,7 +21,11 @@ import MyComponent from './components/MyComponent.vue'
 registerCustomElement('my-component', MyComponent)
 ```
 
-### vue-i18nと組み合わせる場合
+```haml
+%my-component{ vue_component_props(user: user_hash, items: items) }
+```
+
+### vue-i18n と組み合わせる場合
 
 ```javascript
 import Vue from 'vue'
@@ -30,14 +38,14 @@ Vue.use(VueI18n)
 const messages = {
   en: {
     message: {
-      hello: 'hello world'
-    }
+      hello: 'hello world',
+    },
   },
   ja: {
     message: {
-      hello: 'こんにちは、世界'
-    }
-  }
+      hello: 'こんにちは、世界',
+    },
+  },
 }
 
 const i18n = new VueI18n({
@@ -51,6 +59,7 @@ registerCustomElement('my-component', MyComponent, { vueOptions: { i18n } })
 ### Slot
 
 In app/views/home/index.html.haml:
+
 ```haml
 %my-component
   %p hello
