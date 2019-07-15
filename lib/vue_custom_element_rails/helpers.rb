@@ -16,7 +16,14 @@ module VueCustomElementRails
     using Dekiru::CamelizeHash
 
     def _vue_component_props_json(value)
-      value.is_a?(Hash) ? value.deep_camelize_keys(:lower).to_json : value.to_json
+      case value
+      when Hash
+        value.deep_camelize_keys(:lower).to_json
+      when Array
+        value.map { |v| v.is_a?(Hash) ? v.deep_camelize_keys(:lower) : v }.to_json
+      else
+        value
+      end
     end
   end
 end
