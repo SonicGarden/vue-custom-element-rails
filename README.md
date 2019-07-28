@@ -16,6 +16,10 @@ gem 'vue_custom_element_rails', github: 'SonicGarden/vue-custom-element-rails'
 
 ```javascript
 import registerCustomElement from 'vue-custom-element-rails'
+
+// IE11サポート不要の場合
+// import registerCustomElement from 'vue-custom-element-rails/src/slim'
+
 import MyComponent from './components/MyComponent.vue'
 
 registerCustomElement('my-component', MyComponent)
