@@ -1,3 +1,7 @@
+require 'active_support/core_ext/string'
+require 'dekiru/camelize_hash'
+require 'json'
+
 module VueCustomElementRails
   module Helpers
     def vue_component_props(props)
@@ -8,7 +12,7 @@ module VueCustomElementRails
             value = _vue_component_props_json(value)
           end
 
-          [key.to_s.downcase.dasherize, value]
+          [key.to_s.underscore.downcase.dasherize, value]
         end
       hash_arr.to_h
     end
