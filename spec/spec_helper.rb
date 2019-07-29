@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "vue/custom/element/rails"
+require "vue_custom_element_rails"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
