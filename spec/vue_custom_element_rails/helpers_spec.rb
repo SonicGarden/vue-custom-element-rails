@@ -21,7 +21,7 @@ RSpec.describe VueCustomElementRails::Helpers do
         }
       end
 
-      it { is_expected.to eq({ ':vue-custom-element' => '{"userName":"hoge"}', 'gem-version' => 0.1 }) }
+      it { is_expected.to eq({ ':vue-custom-element' => '{"userName":"hoge"}', 'gem-version' => '0.1' }) }
     end
 
     context 'camelcase props' do
@@ -34,7 +34,29 @@ RSpec.describe VueCustomElementRails::Helpers do
         }
       end
 
-      it { is_expected.to eq({ ':vue-custom-element' => '{"userName":"hoge"}', 'gem-version' => 0.1 }) }
+      it { is_expected.to eq({ ':vue-custom-element' => '{"userName":"hoge"}', 'gem-version' => '0.1' }) }
+    end
+
+    context 'boolean props' do
+      let(:props) do
+        {
+          is_show: true,
+          is_hide: false,
+        }
+      end
+
+      it { is_expected.to eq({ 'is-show' => 'true', 'is-hide' => 'false' }) }
+    end
+
+    context 'number props' do
+      let(:props) do
+        {
+          integer: 10,
+          float: 0.01,
+        }
+      end
+
+      it { is_expected.to eq({ 'integer' => '10', 'float' => '0.01' }) }
     end
   end
 end
