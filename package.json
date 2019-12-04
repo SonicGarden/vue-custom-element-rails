@@ -4,9 +4,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublishOnly": "tsc"
   },
-  "private": true,
   "license": "ISC",
   "peerDependencies": {
     "vue": "^2.6.10"
@@ -25,5 +25,10 @@
     "eslint-plugin-import": "^2.18.0",
     "typescript": "^3.6.3",
     "vue": "^2.6.10"
-  }
+  },
+  "files": [
+    "README.md",
+    "package.json",
+    "dist"
+  ]
 }
