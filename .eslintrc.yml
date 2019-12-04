@@ -1,8 +1,0 @@
-extends:
-  - airbnb-base
-env:
-  browser: true
-rules:
-  semi:
-    - error
-    - never
