@@ -1284,9 +1284,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-"vue-custom-element@https://github.com/aki77/vue-custom-element.git#fix-types":
-  version "3.2.11"
-  resolved "https://github.com/aki77/vue-custom-element.git#376d359799d48d8586e2467230cce6f4f03e61b3"
+vue-custom-element@^3.2.12:
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/vue-custom-element/-/vue-custom-element-3.2.12.tgz#34fca6cc86eb39761b5cfcaeb798cce254e29dd3"
+  integrity sha512-7AvAdc37HSiriWUoGHVx+twEc+/tpWDst0PfMlVbQa3EUMFyxAERv1zUmUwZtsVYhQXi8oH/MncXhm3p+4lY4A==
 
 vue@^2.6.10:
   version "2.6.10"

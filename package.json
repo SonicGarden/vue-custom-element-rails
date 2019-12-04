@@ -1,6 +1,6 @@
 {
-  "name": "vue-custom-element-rails",
-  "version": "0.1.1",
+  "name": "@sonicgarden/vue-custom-element-rails",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -14,7 +14,7 @@
   "dependencies": {
     "document-register-element": "^1.13.2",
     "lodash.camelcase": "^4.3.0",
-    "vue-custom-element": "https://github.com/aki77/vue-custom-element.git#fix-types"
+    "vue-custom-element": "^3.2.12"
   },
   "devDependencies": {
     "@types/lodash.camelcase": "^4.3.6",
