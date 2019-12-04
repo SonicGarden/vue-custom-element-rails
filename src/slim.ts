@@ -1,28 +1,20 @@
-import Vue, { ComponentOptions } from 'vue'
+import Vue, { ComponentOptions, VueConstructor } from 'vue'
 import vueCustomElement from 'vue-custom-element'
 import { getProps } from 'vue-custom-element/src/utils/props'
 import camelCase from 'lodash.camelcase'
 
-Vue.use(vueCustomElement)
-
-declare module 'vue-custom-element' {
-  namespace VueCustomElement {
-    interface options {
-      constructorCallback?: () => void
-      connectedCallback?: () => void
-      disconnectedCallback?: () => void
-      attributeChangedCallback?: (
-        name: string,
-        oldValue: any,
-        value: any
-      ) => void
-      destroyTimeout?: number
-      props?: ComponentOptions<Vue>['props']
-      shadow2?: boolean
-      shadowCss?: string
-    }
-  }
+interface Options extends vueCustomElement.options {
+  hasSlot?: boolean;
+  vueOptions?: ComponentOptions<Vue>;
 }
+
+interface IregisterCustomElement {
+  (tag: string, componentDefinition: ComponentOptions<Vue>, options?: Options): void;
+  (tag: string, singleFileComponent: VueConstructor<Vue>, options?: Options): void;
+  (tag: string, asyncComponentDefinition: () => Promise<ComponentOptions<Vue>>, options?: Options): void;
+}
+
+Vue.use(vueCustomElement)
 
 function connectedCallback() {
   const el = this as HTMLElement
@@ -36,17 +28,16 @@ function connectedCallback() {
 
 // NOTE: vue-custom-element && Chromeで発生するslot不具合の暫定対応 (遅延させないとchidNodesが取れない)
 // SEE: https://github.com/karol-f/vue-custom-element/issues/162
-const asyncComponentDefinition = component => () =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      resolve(component)
-    }, 0)
-  })
+const asyncComponentDefinition = (component) => () => new Promise((resolve) => {
+  setTimeout(() => {
+    resolve(component)
+  }, 0)
+})
 
-const registerCustomElement = (
+const registerCustomElement: IregisterCustomElement = (
   tag: string,
   componentDefinition,
-  { hasSlot, vueOptions, ...options } = { hasSlot: false, vueOptions: {} }
+  { hasSlot, vueOptions, ...options } = { hasSlot: false, vueOptions: {} },
 ) => {
   // NOTE: Vue.extendで定義しているコンポーネントをそのまま渡すとasyncコンポーネント扱いになってエラーとなる為extendsOptionsを渡すようにしている
   // SEE: https://github.com/karol-f/vue-custom-element/issues/143
@@ -56,11 +47,13 @@ const registerCustomElement = (
     : componentDefinition
 
   // NOTE: slotがある場合は遅延コンポーネント扱いしている為、props定義を自前で取得して配列形式で渡す必要がある
-  const propsOptions: { props?: ComponentOptions<Vue> } = hasSlot
+  const propsOptions: { props?: ComponentOptions<Vue>['props'] } = hasSlot
     ? { props: getProps(componentOptions).camelCase }
     : {}
 
-  const beforeCreateVueInstance = (rootElement: any) => ({
+  const beforeCreateVueInstance = (
+    rootElement: ComponentOptions<Vue>,
+  ): ComponentOptions<Vue> => ({
     ...rootElement,
     ...vueOptions,
   })
@@ -72,9 +65,8 @@ const registerCustomElement = (
       ...options,
       ...propsOptions,
       connectedCallback,
-      shadow2: false,
       beforeCreateVueInstance,
-    }
+    },
   )
 }
 

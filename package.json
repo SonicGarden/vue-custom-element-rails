@@ -1,8 +1,8 @@
 {
   "name": "vue-custom-element-rails",
   "version": "0.1.1",
-  "main": "src/index.js",
-  "module": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
@@ -14,13 +14,13 @@
   "dependencies": {
     "document-register-element": "^1.13.2",
     "lodash.camelcase": "^4.3.0",
-    "vue-custom-element": "^3.2.7"
+    "vue-custom-element": "https://github.com/aki77/vue-custom-element.git#fix-types"
   },
   "devDependencies": {
     "@types/lodash.camelcase": "^4.3.6",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "eslint": "^5.3.0",
+    "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.0",
     "typescript": "^3.6.3",
