@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-yarn add https://github.com/SonicGarden/vue-custom-element-rails.git
+yarn add @sonicgarden/vue-custom-element-rails
 ```
 
 ```ruby
