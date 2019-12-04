@@ -15,10 +15,10 @@ gem 'vue_custom_element_rails', github: 'SonicGarden/vue-custom-element-rails'
 ## Usage
 
 ```javascript
-import registerCustomElement from 'vue-custom-element-rails'
+import registerCustomElement from '@sonicgarden/vue-custom-element-rails'
 
-// IE11サポート不要の場合
-// import registerCustomElement from 'vue-custom-element-rails/src/slim'
+// When IE11 support is not required
+// import registerCustomElement from '@sonicgarden/vue-custom-element-rails/dist/slim'
 
 import MyComponent from './components/MyComponent.vue'
 
@@ -29,7 +29,7 @@ registerCustomElement('my-component', MyComponent)
 %my-component{ vue_component_props(user: user_hash, items: items) }
 ```
 
-### vue-i18n と組み合わせる場合
+### With vue-i18n
 
 ```javascript
 import Vue from 'vue'
