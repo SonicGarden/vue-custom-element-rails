@@ -62,11 +62,12 @@ RSpec.describe VueCustomElementRails::Helpers do
     context 'nil props' do
       let(:props) do
         {
-          nil_value: nil
+          nil_value: nil,
+          some_value: 'some'
         }
       end
 
-      it { is_expected.to eq({}) }
+      it { is_expected.to eq({ 'some-value' => 'some' }) }
     end
   end
 end
