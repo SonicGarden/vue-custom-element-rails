@@ -14,7 +14,7 @@ module VueCustomElementRails
 
           [key.to_s.underscore.downcase.dasherize, value.nil? ? nil : value.to_s]
         end
-      hash_arr.to_h.reject { |_, v| v.nil? }
+      hash_arr.to_h.compact
     end
 
     using Dekiru::CamelizeHash
