@@ -58,5 +58,16 @@ RSpec.describe VueCustomElementRails::Helpers do
 
       it { is_expected.to eq({ 'integer' => '10', 'float' => '0.01' }) }
     end
+
+    context 'nil props' do
+      let(:props) do
+        {
+          nil_value: nil,
+          some_value: 'some'
+        }
+      end
+
+      it { is_expected.to eq({ 'some-value' => 'some' }) }
+    end
   end
 end

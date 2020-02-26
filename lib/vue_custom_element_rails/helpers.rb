@@ -12,9 +12,9 @@ module VueCustomElementRails
             value = _vue_component_props_json(value)
           end
 
-          [key.to_s.underscore.downcase.dasherize, value.to_s]
+          [key.to_s.underscore.downcase.dasherize, value.nil? ? nil : value.to_s]
         end
-      hash_arr.to_h
+      hash_arr.to_h.compact
     end
 
     using Dekiru::CamelizeHash
