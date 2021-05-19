@@ -1,4 +1,6 @@
-# vue-custom-element-rails
+# Deprecated
+
+> Please use [vwrap](https://github.com/SonicGarden/vwrap) instead.
 
 [vue\-custom\-element](https://github.com/karol-f/vue-custom-element) wrapper
 
